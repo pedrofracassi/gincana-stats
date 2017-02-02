@@ -2,5 +2,6 @@ config = {
     "api_tokens": {
         "fb_access_token": "YOUTUBE_TOKEN",
         "youtube_access_token": "FACEBOOK_TOKEN"
-    }
+    },
+    "google_analytics_id": ""
 }

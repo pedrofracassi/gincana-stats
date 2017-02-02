@@ -1,12 +1,24 @@
 var youtube_key = config.api_tokens.youtube_access_token;
 var fb_access_token = config.api_tokens.fb_access_token;
+var google_analytics_id = config.google_analytics_id;
+
+// Google analytics stuff
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+if (google_analytics_id != "undefined") {
+    ga('create', google_analytics_id, 'auto');
+    ga('send', 'pageview');
+}
 
 function getText(url, callback) {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (request.readyState == 4) {
             if (request.status == 200)
-                callback(request.responseText);
+            callback(request.responseText);
             else {
                 callback("nex");
             }
