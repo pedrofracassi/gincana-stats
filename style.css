@@ -1,0 +1,247 @@
+/* 
+
+TERRITÓRIO DO MENINO REDSTONEBR 
+Não entre a não ser que tenha skills mágicas
+com CSS. Se entrar, traga um lanche pro ser.
+
+ÍNDICE
+0.1 - CARDS DAS REDES SOCIAIS
+0.2 - HEADER
+0.3 - FEED INSTAGRAM
+0.4 - FOOTER
+
+*/
+body {
+  background-color: #f1f1f1;
+}
+td {
+    cursor: pointer;
+}
+/* 0.1 CARDS REDES SOCIAIS */
+.instagram .panel-heading {
+  background: #f09433; 
+  background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+  background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+  background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+  position: relative;
+}
+.facebook .panel-heading {
+  background-color: #3b5998 !important;
+  position: relative;
+}
+.youtube .panel-heading {
+  background-color: #cd201f !important;
+  position: relative;
+}
+.panel-heading h3 {
+  margin-top: 10px !important;
+  color: white;
+}
+.panel {
+  border: none;
+  border-radius: 5px;
+  transition: all 0.5s ease;
+}
+
+.panel:hover {
+  -webkit-box-shadow: 0px 19px 22px -4px rgba(0,0,0,0.10);
+  -moz-box-shadow: 0px 19px 22px -4px rgba(0,0,0,0.10);
+  box-shadow: 0px 19px 22px -4px rgba(0,0,0,0.10);
+  transform: scale(1.05);
+  transition: all 0.5s ease;
+}
+.panel-heading {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border: none;
+}
+.instagram .panel-heading:after {
+  content: "\f16d"; 
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  position: absolute;
+  font-size: 40px;
+  color: rgba(255,255,255,1);
+  top: 6px;
+  overflow: hidden;
+  left: 15px;
+  z-index: 1;
+}
+.youtube .panel-heading:after {
+  content: "\f16a"; 
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  position: absolute;
+  font-size: 40px;
+  color: rgba(255,255,255,1);
+  top: 6px;
+  overflow: hidden;
+  left: 15px;
+  z-index: 1;
+}
+.facebook .panel-heading:after {
+  content: "\f230"; 
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  position: absolute;
+  font-size: 40px;
+  color: rgba(255,255,255,1);
+  top: 6px;
+  overflow: hidden;
+  left: 15px;
+  z-index: 1;
+}
+.loading-spinner {
+  margin: 15px auto;
+}
+/* FIM CARDS REDES SOCIAIS */
+/* 0.2 HEADER */
+.holder {
+  background: #43cea2;
+  background: -moz-linear-gradient(-45deg,  #43cea2 0%, #185a9d 100%);
+  background: -webkit-linear-gradient(-45deg,  #43cea2 0%,#185a9d 100%);
+  background: linear-gradient(135deg,  #43cea2 0%,#185a9d 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#43cea2', endColorstr='#185a9d',GradientType=1 );
+  color: #fff;
+  padding: 50px 0 50px;
+  margin-bottom: 20px;
+}
+#title {
+  font-weight: bolder;
+}
+@media (max-width: 767px) {
+  .holder * h4 {
+    padding-bottom: 15px !important;
+  }
+}
+.whatsapp, .whatsapp:hover, .whatsapp:active, .whatsapp:focus {
+  background-color: #25d366;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: #fff;
+  text-decoration: none;
+  clear: both;
+  margin-top: 100px !important;
+}
+/* FIM HEADER */
+.loading {
+    background-color: #eceeef;
+}
+/* 0.3 FEED INSTAGRAM */
+.feed {
+  background-color: #fff;
+}
+.feed * h1 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+h1 span {
+  font-weight: bolder;
+}
+.feed-card {
+  position: relative;
+  margin-bottom: 30px;
+  transition: all 0.5s ease;
+  overflow: hidden;
+  padding: 0;
+}
+.feed-card:hover {
+  transform: scale(1.05);
+  transition: all 0.5s ease;
+  z-index:200;
+}
+.avatar {
+  width: 40px;
+}
+.feed-card .equipe {
+  padding: 10px;
+  transition: all 0.5s ease;
+  background-color: #ddd;
+  border-radius 5px;
+}
+.feed-card:hover .equipe {
+  -webkit-box-shadow: 0px 19px 22px -4px rgba(0,0,0,0.10);
+  -moz-box-shadow: 0px 19px 22px -4px rgba(0,0,0,0.10);
+  box-shadow: 0px 19px 22px -4px rgba(0,0,0,0.10);
+  transition: all 0.5s ease;
+}
+.feed-img {
+  
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+/*  Sério, não faço a menor idéia de como funcionao */
+.thisClassUsesBlackMagic {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   line-height: 16px;     /* fallback */
+   max-height: 32px;      /* fallback */
+   -webkit-line-clamp: 2; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+.equipe-1 {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-top: 0;
+  width: 100%;
+}
+.loader-feed {
+    font-size: 30px;
+    border-radius: 100px;
+    padding: 3px 20px 5px 20px;
+    color: #fff;
+    margin-bottom: 50px !important;
+    clear: both;
+    font-weight: lighter;
+    background: #185a9d;
+    background: -moz-linear-gradient(-45deg,  #43cea2 0%, #185a9d 100%);
+    background: -webkit-linear-gradient(-45deg,  #43cea2 0%,#185a9d 100%);
+    background: linear-gradient(135deg,  #43cea2 0%,#185a9d 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#43cea2', endColorstr='#185a9d',GradientType=1 );
+}
+#instagram-photos-loading {
+  margin-bottom: 30px;
+}
+.postLink img {
+  position: relative;
+  
+}
+.postDescription {
+  position: absolute;
+  background-color: rgba(0,0,0,0.8);
+  z-index:100;
+  color: #fff;
+  width: 100%;
+  padding: 10px 15px;
+  bottom: 0;
+  left: 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+/* FIM FEED INSTAGRAM */
+/* 0.4 FOOTER */
+footer {
+  padding: 20px 0;
+  color: #fff;
+  background-color: #185a9d;
+}
+footer a {
+  color: #43cea2;
+}
+.ranking-title {
+  text-align: center;
+  padding: 0 0 20px 0;
+  margin: 0;
+}
+/* FIM FOOTER */
