@@ -161,7 +161,7 @@ function checkInstagramArray() {
             maxphotos = orderedphotos.length;
         }
 
-        getText('photopanel.php', function(data) {
+        getText('photopanel.html', function(data) {
             document.getElementById("instagram-photos-loading").remove();
 
             for (i = 0; i < maxphotos; i++) {

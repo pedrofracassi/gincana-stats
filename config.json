@@ -1,7 +1,7 @@
 config = {
     "api_tokens": {
-        "fb_access_token": "YOUTUBE_TOKEN",
-        "youtube_access_token": "FACEBOOK_TOKEN"
+        "fb_access_token": "370888723271610|_fZYpPW3pIlpHDblj9WFj8JpqJw",
+        "youtube_access_token": "AIzaSyCuWY1vzKBaUkkUlECKANFr-WZlnFkSV84"
     },
-    "google_analytics_id": ""
+    "google_analytics_id": "UA-72307702-2"
 }
