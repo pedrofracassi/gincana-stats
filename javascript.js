@@ -4,8 +4,8 @@ var google_analytics_id = config.google_analytics_id;
 
 // Google analytics stuff
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 if (google_analytics_id != "undefined") {
@@ -17,18 +17,20 @@ if (google_analytics_id != "undefined") {
 var qd = {};
 location.search.substr(1).split("&").forEach(function(item) {
     var s = item.split("="),
-        k = s[0],
-        v = s[1] && decodeURIComponent(s[1]);
+    k = s[0],
+    v = s[1] && decodeURIComponent(s[1]);
     (qd[k] = qd[k] || []).push(v)
 });
 
 var year = 0;
 
 if(qd.y != undefined) {
-    console.log('Year variable is set...');
     if (qd.y['0'] != undefined) {
-        console.log('...to ' + qd.y['0']);
-        year = qd.y['0'];
+        if (qd.y['0'] in equipes.years) {
+            year = qd.y['0'];
+        } else {
+            window.location = '?y=' + equipes.default_year;
+        }
     } else {
         year = equipes.default_year;
     }
@@ -46,7 +48,7 @@ function getText(url, callback) {
     request.onreadystatechange = function() {
         if (request.readyState == 4) {
             if (request.status == 200)
-                callback(request.responseText);
+            callback(request.responseText);
             else {
                 callback("nex");
             }

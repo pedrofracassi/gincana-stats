@@ -23,29 +23,6 @@ equipes = {
                 "facebook": "equipethunder2016",
                 "youtube": "UCgi1UX0_RTYh4Rl67oSlybA"
             }
-        ],
-        "2017": [
-            {
-                "nome": "Equipe Hare",
-                "cor": "Vermelho",
-                "instagram": "equipehare",
-                "facebook": "476825302524129",
-                "youtube": "UCov_WWXgy-QbEO1fSWMFliA"
-            },
-            {
-                "nome": "Equipe Safa",
-                "cor": "Verde",
-                "instagram": "equipe.safa",
-                "facebook": "equipesafa",
-                "youtube": "UC6attZ_wy7i9fTEXHkdUJcw"
-            },
-            {
-                "nome": "Equipe Thunder",
-                "cor": "Amarela",
-                "instagram": "equipethunder2016",
-                "facebook": "equipethunder2016",
-                "youtube": "UCgi1UX0_RTYh4Rl67oSlybA"
-            }
         ]
     }
 }
