@@ -13,12 +13,40 @@ if (google_analytics_id != "undefined") {
     ga('send', 'pageview');
 }
 
+// Get query parameters
+var qd = {};
+location.search.substr(1).split("&").forEach(function(item) {
+    var s = item.split("="),
+        k = s[0],
+        v = s[1] && decodeURIComponent(s[1]);
+    (qd[k] = qd[k] || []).push(v)
+});
+
+var year = 0;
+
+if(qd.y != undefined) {
+    console.log('Year variable is set...');
+    if (qd.y['0'] != undefined) {
+        console.log('...to ' + qd.y['0']);
+        year = qd.y['0'];
+    } else {
+        year = equipes.default_year;
+    }
+} else {
+    year = equipes.default_year;
+}
+
+console.log(year);
+console.log(equipes.years[year]);
+
+document.getElementById('title_year').innerHTML = year;
+
 function getText(url, callback) {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (request.readyState == 4) {
             if (request.status == 200)
-            callback(request.responseText);
+                callback(request.responseText);
             else {
                 callback("nex");
             }
@@ -64,8 +92,9 @@ var facebook_array = new Array();
 var youtube_array = new Array();
 var lastphotos = new Array();
 
-for (i = 0; i < equipes.length; i++) {
-    var e = equipes[i];
+for (i = 0; i < Object.keys(equipes.years[year]).length; i++) {
+    var e = equipes.years[year][i];
+
     getYoutubeSubscriberCount(e, function(data, equipe) {
         var trow = {
             equipe: equipe,
@@ -111,7 +140,7 @@ function sortByKey(array, key) {
 }
 
 function checkFacebookArray() {
-    if (facebook_array.length == equipes.length) {
+    if (facebook_array.length == equipes.years[year].length) {
         var newarray = facebook_array.sort(function(a, b) {
             return a.count - b.count;
         });
@@ -119,7 +148,7 @@ function checkFacebookArray() {
         document.getElementById("facebook-loading").remove();
 
         for (i = 0; i < newarray.length; i++) {
-            var place = equipes.length - i;
+            var place = equipes.years[year].length - i;
             var tr = document.createElement('tr');
             tr.innerHTML = '<td><strong>#' + place + '</strong> ' + newarray[i].equipe.nome + ' (/' + newarray[i].equipe.facebook + ') - <small>' + numberWithCommas(newarray[i].count) + ' curtidas</small></td>';
             $('#facebook-tbody').prepend(tr);
@@ -128,8 +157,8 @@ function checkFacebookArray() {
 }
 
 function checkInstagramArray() {
-
-    if (instagram_array.length == equipes.length) {
+    console.log("yay");
+    if (instagram_array.length == equipes.years[year].length) {
 
         // RANKING DAS EQUIPES //
         var newarray = new Array();
@@ -143,7 +172,7 @@ function checkInstagramArray() {
         var lenght = newarray.length;
 
         for (index = 0; index < lenght; index++) {
-            var place = equipes.length - index;
+            var place = equipes.years[year].length - index;
             var tr = document.createElement('tr');
             tr.innerHTML = '<td><strong>#' + place + '</strong> ' + newarray[index].equipe.nome + ' (@' + newarray[index].equipe.instagram + ') - <small>' + numberWithCommas(newarray[index].count) + ' seguidores</small></td>';
             $('#instagram-tbody').prepend(tr);
@@ -192,7 +221,7 @@ function checkInstagramArray() {
 }
 
 function checkYoutubeArray() {
-    if (youtube_array.length == equipes.length) {
+    if (youtube_array.length == equipes.years[year].length) {
         var newarray = youtube_array.sort(function(a, b) {
             return a.count - b.count;
         });
@@ -200,7 +229,7 @@ function checkYoutubeArray() {
         document.getElementById("youtube-loading").remove();
 
         for (i = 0; i < newarray.length; i++) {
-            var place = equipes.length - i;
+            var place = equipes.years[year].length - i;
             var tr = document.createElement('tr');
             tr.innerHTML = '<td><strong>#' + place + '</strong> ' + newarray[i].equipe.nome + ' (/' + newarray[i].equipe.youtube + ') - <small>' + numberWithCommas(newarray[i].count) + ' inscritos</small></td>';
             $('#youtube-tbody').prepend(tr);
