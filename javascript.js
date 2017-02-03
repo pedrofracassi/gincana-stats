@@ -190,13 +190,6 @@ function checkInstagramArray() {
             div.getElementsByClassName('postLink')[0].setAttribute('href', 'http://instagram.com/p/' + orderedphotos[i].code);
             if (orderedphotos[i].caption) {
                 div.getElementsByClassName('postDescription')[0].innerHTML = orderedphotos[i].caption;
-                var p = $('#' + orderedphotos[i].code + ' .col-md-4 .feed-card span');
-                var divh = p.height();
-                while ($(p).outerHeight() > divh) {
-                    $(p).text(function(index, text) {
-                        return text.replace(/\W*\s(\S)*$/, '...');
-                    });
-                }
             } else {
                 div.getElementsByClassName('postDescription')[0].remove();
             }
