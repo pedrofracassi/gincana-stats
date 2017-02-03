@@ -2,6 +2,7 @@ var youtube_key = config.api_tokens.youtube_access_token;
 var fb_access_token = config.api_tokens.fb_access_token;
 var google_analytics_id = config.google_analytics_id;
 var photopanel = '<div class="col-md-4"><div class="feed-card"><a class="postLink"><span class="postDescription thisClassUsesBlackMagic "></span><img class="postImage feed-img img-responsive" alt=""></a></div></div>';
+var readystuff = 0;
 
 // Google analytics stuff
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -112,6 +113,7 @@ function refreshAll() {
     document.getElementById("instagram-tbody").innerHTML = "";
     document.getElementById("facebook-tbody").innerHTML = "";
     console.log('Refreshing...');
+    readystuff = 0;
     fetchEverything();
 }
 
@@ -131,6 +133,14 @@ function sortByKey(array, key) {
     });
 }
 
+function checkIfStuffIsReady() {
+    console.log(readystuff);
+    if (readystuff == 3) {
+        document.getElementsByClassName('refresh-button')[0].removeAttribute('disabled');
+        document.getElementsByClassName('refresh-button')[0].innerHTML = '<i id="reloadSpinner" class="fa fa-refresh"></i> Recarregar';
+    }
+}
+
 function checkFacebookArray() {
     if (facebook_array.length == equipes.length) {
         var newarray = facebook_array.sort(function(a, b) {
@@ -145,6 +155,9 @@ function checkFacebookArray() {
             tr.innerHTML = '<td><strong>#' + place + '</strong> ' + newarray[i].equipe.nome + ' (/' + newarray[i].equipe.facebook + ') - <small>' + numberWithCommas(newarray[i].count) + ' curtidas</small></td>';
             $('#facebook-tbody').prepend(tr);
         }
+
+        readystuff++;
+        checkIfStuffIsReady();
     }
 }
 
@@ -179,7 +192,7 @@ function checkInstagramArray() {
         if (orderedphotos.length < 6) {
             maxphotos = orderedphotos.length;
         }
-        
+
         document.getElementById("instagram-photos-loading").setAttribute('style', 'display:none;');
 
         for (i = 0; i < maxphotos; i++) {
@@ -195,6 +208,8 @@ function checkInstagramArray() {
             }
             $('#photosContainer').append(div);
         }
+        readystuff++;
+        checkIfStuffIsReady();
         delete newarray;
     }
 
@@ -215,6 +230,10 @@ function checkYoutubeArray() {
             tr.innerHTML = '<td><strong>#' + place + '</strong> ' + newarray[i].equipe.nome + ' (/' + newarray[i].equipe.youtube + ') - <small>' + numberWithCommas(newarray[i].count) + ' inscritos</small></td>';
             $('#youtube-tbody').prepend(tr);
         }
+
+        readystuff++;
+        checkIfStuffIsReady();
+        delete newarray;
     }
 }
 
