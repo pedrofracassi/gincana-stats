@@ -112,6 +112,7 @@ function refreshAll() {
     document.getElementById("youtube-tbody").innerHTML = "";
     document.getElementById("instagram-tbody").innerHTML = "";
     document.getElementById("facebook-tbody").innerHTML = "";
+    document.getElementById("photosContainer").innerHTML = "";
     console.log('Refreshing...');
     readystuff = 0;
     fetchEverything();
