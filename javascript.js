@@ -59,6 +59,11 @@ function getFacebookFanCount(equipe, callback) {
     })
 }
 
+function refreshAll() {
+    document.getElementsByClassName('refresh-button')[0].setAttribute('disabled', 'yay');
+    document.getElementsByClassName('refresh-button')[0].innerHTML = '<i id="reloadSpinner" class="fa fa-refresh fa-spin"></i> Recarregando';
+}
+
 var instagram_array = new Array();
 var facebook_array = new Array();
 var youtube_array = new Array();
