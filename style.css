@@ -1,6 +1,6 @@
-/* 
+/*
 
-TERRITÓRIO DO MENINO REDSTONEBR 
+TERRITÓRIO DO MENINO REDSTONEBR
 Não entre a não ser que tenha skills mágicas
 com CSS. Se entrar, traga um lanche pro ser.
 
@@ -19,10 +19,10 @@ td {
 }
 /* 0.1 CARDS REDES SOCIAIS */
 .instagram .panel-heading {
-  background: #f09433; 
-  background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
-  background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
-  background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+  background: #f09433;
+  background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+  background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
   position: relative;
 }
@@ -57,7 +57,7 @@ td {
   border: none;
 }
 .instagram .panel-heading:after {
-  content: "\f16d"; 
+  content: "\f16d";
   font-family: FontAwesome;
   font-style: normal;
   font-weight: normal;
@@ -71,7 +71,7 @@ td {
   z-index: 1;
 }
 .youtube .panel-heading:after {
-  content: "\f16a"; 
+  content: "\f16a";
   font-family: FontAwesome;
   font-style: normal;
   font-weight: normal;
@@ -85,7 +85,7 @@ td {
   z-index: 1;
 }
 .facebook .panel-heading:after {
-  content: "\f230"; 
+  content: "\f230";
   font-family: FontAwesome;
   font-style: normal;
   font-weight: normal;
@@ -103,6 +103,24 @@ td {
 }
 /* FIM CARDS REDES SOCIAIS */
 /* 0.2 HEADER */
+.refresh-button {
+    border-radius: 5px !important;
+    margin-top: 10px;
+    background-color: transparent;
+    border-color: white;
+    color: white;
+    border-width: 2px;
+}
+.refresh-button:hover {
+    background-color: white;
+    color: black;
+    border-color: white;
+}
+.refresh-button:disabled,.refresh-button:disabled:hover {
+    background-color: #f3f3f3;
+    border-color: #f3f3f3;
+    color: #aaaaaa;
+}
 .holder {
   background: #43cea2;
   background: -moz-linear-gradient(-45deg,  #43cea2 0%, #185a9d 100%);
@@ -173,7 +191,7 @@ h1 span {
   transition: all 0.5s ease;
 }
 .feed-img {
-  
+
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -215,7 +233,7 @@ h1 span {
 }
 .postLink img {
   position: relative;
-  
+
 }
 .postDescription {
   position: absolute;

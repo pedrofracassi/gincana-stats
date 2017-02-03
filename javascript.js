@@ -1,11 +1,13 @@
 var youtube_key = config.api_tokens.youtube_access_token;
 var fb_access_token = config.api_tokens.fb_access_token;
 var google_analytics_id = config.google_analytics_id;
+var photopanel = '<div class="col-md-4"><div class="feed-card"><a class="postLink"><span class="postDescription thisClassUsesBlackMagic "></span><img class="postImage feed-img img-responsive" alt=""></a></div></div>';
+var readystuff = 0;
 
 // Google analytics stuff
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 if (google_analytics_id != "undefined") {
@@ -64,34 +66,56 @@ var facebook_array = new Array();
 var youtube_array = new Array();
 var lastphotos = new Array();
 
-for (i = 0; i < equipes.length; i++) {
-    var e = equipes[i];
-    getYoutubeSubscriberCount(e, function(data, equipe) {
-        var trow = {
-            equipe: equipe,
-            count: data
-        };
-        youtube_array.push(trow);
-        checkYoutubeArray();
-    });
-    getInstagramFollowerCount(e, function(data, equipe) {
-        var trow = {
-            equipe: equipe,
-            count: data.user.followed_by.count
-        };
+function fetchEverything() {
+    for (i = 0; i < equipes.length; i++) {
+        var e = equipes[i];
+        getYoutubeSubscriberCount(e, function(data, equipe) {
+            var trow = {
+                equipe: equipe,
+                count: data
+            };
+            youtube_array.push(trow);
+            checkYoutubeArray();
+        });
+        getInstagramFollowerCount(e, function(data, equipe) {
+            var trow = {
+                equipe: equipe,
+                count: data.user.followed_by.count
+            };
 
-        lastphotos = lastphotos.concat(data.user.media.nodes);
-        instagram_array.push(trow);
-        checkInstagramArray();
-    });
-    getFacebookFanCount(e, function(data, equipe) {
-        var trow = {
-            equipe: equipe,
-            count: data
-        };
-        facebook_array.push(trow);
-        checkFacebookArray();
-    });
+            lastphotos = lastphotos.concat(data.user.media.nodes);
+            instagram_array.push(trow);
+            checkInstagramArray();
+        });
+        getFacebookFanCount(e, function(data, equipe) {
+            var trow = {
+                equipe: equipe,
+                count: data
+            };
+            facebook_array.push(trow);
+            checkFacebookArray();
+        });
+    }
+}
+
+function refreshAll() {
+    document.getElementsByClassName('refresh-button')[0].setAttribute('disabled', 'yay');
+    document.getElementsByClassName('refresh-button')[0].innerHTML = '<i id="reloadSpinner" class="fa fa-refresh fa-spin"></i> Recarregando';
+    while(instagram_array.length) instagram_array.pop();
+    while(facebook_array.length) facebook_array.pop();
+    while(youtube_array.length) youtube_array.pop();
+    while(lastphotos.length) lastphotos.pop();
+    document.getElementById("facebook-loading").removeAttribute('style');
+    document.getElementById("instagram-loading").removeAttribute('style');
+    document.getElementById("youtube-loading").removeAttribute('style');
+    document.getElementById("instagram-photos-loading").removeAttribute('style');
+    document.getElementById("youtube-tbody").innerHTML = "";
+    document.getElementById("instagram-tbody").innerHTML = "";
+    document.getElementById("facebook-tbody").innerHTML = "";
+    document.getElementById("photosContainer").innerHTML = "";
+    console.log('Refreshing...');
+    readystuff = 0;
+    fetchEverything();
 }
 
 function sortByKey(array, key) {
@@ -110,13 +134,21 @@ function sortByKey(array, key) {
     });
 }
 
+function checkIfStuffIsReady() {
+    console.log(readystuff);
+    if (readystuff == 3) {
+        document.getElementsByClassName('refresh-button')[0].removeAttribute('disabled');
+        document.getElementsByClassName('refresh-button')[0].innerHTML = '<i id="reloadSpinner" class="fa fa-refresh"></i> Recarregar';
+    }
+}
+
 function checkFacebookArray() {
     if (facebook_array.length == equipes.length) {
         var newarray = facebook_array.sort(function(a, b) {
             return a.count - b.count;
         });
 
-        document.getElementById("facebook-loading").remove();
+        document.getElementById("facebook-loading").setAttribute('style', 'display:none;');
 
         for (i = 0; i < newarray.length; i++) {
             var place = equipes.length - i;
@@ -124,6 +156,9 @@ function checkFacebookArray() {
             tr.innerHTML = '<td><strong>#' + place + '</strong> ' + newarray[i].equipe.nome + ' (/' + newarray[i].equipe.facebook + ') - <small>' + numberWithCommas(newarray[i].count) + ' curtidas</small></td>';
             $('#facebook-tbody').prepend(tr);
         }
+
+        readystuff++;
+        checkIfStuffIsReady();
     }
 }
 
@@ -132,13 +167,11 @@ function checkInstagramArray() {
     if (instagram_array.length == equipes.length) {
 
         // RANKING DAS EQUIPES //
-        var newarray = new Array();
-
-        newarray = instagram_array.sort(function(a, b) {
+        var newarray = instagram_array.sort(function(a, b) {
             return a.count - b.count;
         });
 
-        document.getElementById("instagram-loading").remove();
+        document.getElementById("instagram-loading").setAttribute('style', 'display:none;');
 
         var lenght = newarray.length;
 
@@ -161,31 +194,24 @@ function checkInstagramArray() {
             maxphotos = orderedphotos.length;
         }
 
-        getText('photopanel.html', function(data) {
-            document.getElementById("instagram-photos-loading").remove();
+        document.getElementById("instagram-photos-loading").setAttribute('style', 'display:none;');
 
-            for (i = 0; i < maxphotos; i++) {
-                var div = document.createElement('div');
-                div.setAttribute('id', orderedphotos[i].code);
-                div.innerHTML = data;
-                div.getElementsByClassName('postImage')[0].setAttribute('src', orderedphotos[i].thumbnail_src);
-                div.getElementsByClassName('postLink')[0].setAttribute('href', 'http://instagram.com/p/' + orderedphotos[i].code);
-                if (orderedphotos[i].caption) {
-                    div.getElementsByClassName('postDescription')[0].innerHTML = orderedphotos[i].caption;
-                    var p = $('#' + orderedphotos[i].code + ' .col-md-4 .feed-card span');
-                    var divh = p.height();
-                    while ($(p).outerHeight() > divh) {
-                        $(p).text(function(index, text) {
-                            return text.replace(/\W*\s(\S)*$/, '...');
-                        });
-                    }
-                } else {
-                    div.getElementsByClassName('postDescription')[0].remove();
-                }
-                $('#photosContainer').append(div);
+        for (i = 0; i < maxphotos; i++) {
+            var div = document.createElement('div');
+            div.setAttribute('id', orderedphotos[i].code);
+            div.innerHTML = photopanel;
+            div.getElementsByClassName('postImage')[0].setAttribute('src', orderedphotos[i].thumbnail_src);
+            div.getElementsByClassName('postLink')[0].setAttribute('href', 'http://instagram.com/p/' + orderedphotos[i].code);
+            if (orderedphotos[i].caption) {
+                div.getElementsByClassName('postDescription')[0].innerHTML = orderedphotos[i].caption;
+            } else {
+                div.getElementsByClassName('postDescription')[0].remove();
             }
-        });
-
+            $('#photosContainer').append(div);
+        }
+        readystuff++;
+        checkIfStuffIsReady();
+        delete newarray;
     }
 
 
@@ -197,7 +223,7 @@ function checkYoutubeArray() {
             return a.count - b.count;
         });
 
-        document.getElementById("youtube-loading").remove();
+        document.getElementById("youtube-loading").setAttribute('style', 'display:none;');
 
         for (i = 0; i < newarray.length; i++) {
             var place = equipes.length - i;
@@ -205,5 +231,11 @@ function checkYoutubeArray() {
             tr.innerHTML = '<td><strong>#' + place + '</strong> ' + newarray[i].equipe.nome + ' (/' + newarray[i].equipe.youtube + ') - <small>' + numberWithCommas(newarray[i].count) + ' inscritos</small></td>';
             $('#youtube-tbody').prepend(tr);
         }
+
+        readystuff++;
+        checkIfStuffIsReady();
+        delete newarray;
     }
 }
+
+fetchEverything();
