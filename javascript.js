@@ -100,10 +100,10 @@ function fetchEverything() {
 function refreshAll() {
     document.getElementsByClassName('refresh-button')[0].setAttribute('disabled', 'yay');
     document.getElementsByClassName('refresh-button')[0].innerHTML = '<i id="reloadSpinner" class="fa fa-refresh fa-spin"></i> Recarregando';
-    instagram_array = new Array();
-    facebook_array = new Array();
-    youtube_array = new Array();
-    lastphotos = new Array();
+    while(instagram_array.length) instagram_array.pop();
+    while(facebook_array.length) facebook_array.pop();
+    while(youtube_array.length) youtube_array.pop();
+    while(lastphotos.length) lastphotos.pop();
     document.getElementById("facebook-loading").removeAttribute('style');
     document.getElementById("instagram-loading").removeAttribute('style');
     document.getElementById("youtube-loading").removeAttribute('style');
@@ -153,9 +153,7 @@ function checkInstagramArray() {
     if (instagram_array.length == equipes.length) {
 
         // RANKING DAS EQUIPES //
-        var newarray = new Array();
-
-        newarray = instagram_array.sort(function(a, b) {
+        var newarray = instagram_array.sort(function(a, b) {
             return a.count - b.count;
         });
 
@@ -204,7 +202,7 @@ function checkInstagramArray() {
             }
             $('#photosContainer').append(div);
         }
-
+        delete newarray;
     }
 
 
