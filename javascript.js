@@ -1,11 +1,12 @@
 var youtube_key = config.api_tokens.youtube_access_token;
 var fb_access_token = config.api_tokens.fb_access_token;
 var google_analytics_id = config.google_analytics_id;
+var photopanel = '<div class="col-md-4"><div class="feed-card"><a class="postLink"><span class="postDescription thisClassUsesBlackMagic "></span><img class="postImage feed-img img-responsive" alt=""></a></div></div>'
 
 // Google analytics stuff
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 if (google_analytics_id != "undefined") {
@@ -59,24 +60,6 @@ function getFacebookFanCount(equipe, callback) {
     })
 }
 
-function refreshAll() {
-    document.getElementsByClassName('refresh-button')[0].setAttribute('disabled', 'yay');
-    document.getElementsByClassName('refresh-button')[0].innerHTML = '<i id="reloadSpinner" class="fa fa-refresh fa-spin"></i> Recarregando';
-    instagram_array = new Array();
-    facebook_array = new Array();
-    youtube_array = new Array();
-    lastphotos = new Array();
-    document.getElementById("facebook-loading").removeAttribute('style');
-    document.getElementById("instagram-loading").removeAttribute('style');
-    document.getElementById("youtube-loading").removeAttribute('style');
-    document.getElementById("instagram-photos-loading").removeAttribute('style');
-    document.getElementById("youtube-tbody").innerHTML = "";
-    document.getElementById("instagram-tbody").innerHTML = "";
-    document.getElementById("facebook-tbody").innerHTML = "";
-    console.log('Refreshing...');
-    fetchEverything();
-}
-
 var instagram_array = new Array();
 var facebook_array = new Array();
 var youtube_array = new Array();
@@ -112,6 +95,24 @@ function fetchEverything() {
             checkFacebookArray();
         });
     }
+}
+
+function refreshAll() {
+    document.getElementsByClassName('refresh-button')[0].setAttribute('disabled', 'yay');
+    document.getElementsByClassName('refresh-button')[0].innerHTML = '<i id="reloadSpinner" class="fa fa-refresh fa-spin"></i> Recarregando';
+    instagram_array = new Array();
+    facebook_array = new Array();
+    youtube_array = new Array();
+    lastphotos = new Array();
+    document.getElementById("facebook-loading").removeAttribute('style');
+    document.getElementById("instagram-loading").removeAttribute('style');
+    document.getElementById("youtube-loading").removeAttribute('style');
+    document.getElementById("instagram-photos-loading").removeAttribute('style');
+    document.getElementById("youtube-tbody").innerHTML = "";
+    document.getElementById("instagram-tbody").innerHTML = "";
+    document.getElementById("facebook-tbody").innerHTML = "";
+    console.log('Refreshing...');
+    fetchEverything();
 }
 
 function sortByKey(array, key) {
@@ -180,31 +181,29 @@ function checkInstagramArray() {
         if (orderedphotos.length < 6) {
             maxphotos = orderedphotos.length;
         }
+        
+        document.getElementById("instagram-photos-loading").setAttribute('style', 'display:none;');
 
-        getText('photopanel.html', function(data) {
-            document.getElementById("instagram-photos-loading").setAttribute('style', 'display:none;');
-
-            for (i = 0; i < maxphotos; i++) {
-                var div = document.createElement('div');
-                div.setAttribute('id', orderedphotos[i].code);
-                div.innerHTML = data;
-                div.getElementsByClassName('postImage')[0].setAttribute('src', orderedphotos[i].thumbnail_src);
-                div.getElementsByClassName('postLink')[0].setAttribute('href', 'http://instagram.com/p/' + orderedphotos[i].code);
-                if (orderedphotos[i].caption) {
-                    div.getElementsByClassName('postDescription')[0].innerHTML = orderedphotos[i].caption;
-                    var p = $('#' + orderedphotos[i].code + ' .col-md-4 .feed-card span');
-                    var divh = p.height();
-                    while ($(p).outerHeight() > divh) {
-                        $(p).text(function(index, text) {
-                            return text.replace(/\W*\s(\S)*$/, '...');
-                        });
-                    }
-                } else {
-                    div.getElementsByClassName('postDescription')[0].remove();
+        for (i = 0; i < maxphotos; i++) {
+            var div = document.createElement('div');
+            div.setAttribute('id', orderedphotos[i].code);
+            div.innerHTML = photopanel;
+            div.getElementsByClassName('postImage')[0].setAttribute('src', orderedphotos[i].thumbnail_src);
+            div.getElementsByClassName('postLink')[0].setAttribute('href', 'http://instagram.com/p/' + orderedphotos[i].code);
+            if (orderedphotos[i].caption) {
+                div.getElementsByClassName('postDescription')[0].innerHTML = orderedphotos[i].caption;
+                var p = $('#' + orderedphotos[i].code + ' .col-md-4 .feed-card span');
+                var divh = p.height();
+                while ($(p).outerHeight() > divh) {
+                    $(p).text(function(index, text) {
+                        return text.replace(/\W*\s(\S)*$/, '...');
+                    });
                 }
-                $('#photosContainer').append(div);
+            } else {
+                div.getElementsByClassName('postDescription')[0].remove();
             }
-        });
+            $('#photosContainer').append(div);
+        }
 
     }
 
