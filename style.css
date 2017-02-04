@@ -102,6 +102,24 @@ td {
 }
 /* FIM CARDS REDES SOCIAIS */
 /* 0.2 HEADER */
+.refresh-button {
+    border-radius: 5px !important;
+    margin-top: 10px;
+    background-color: transparent;
+    border-color: white;
+    color: white;
+    border-width: 2px;
+}
+.refresh-button:hover {
+    background-color: white;
+    color: black;
+    border-color: white;
+}
+.refresh-button:disabled,.refresh-button:disabled:hover {
+    background-color: #f3f3f3;
+    border-color: #f3f3f3;
+    color: #aaaaaa;
+}
 .holder {
   background: #43cea2;
   background: -moz-linear-gradient(-45deg,  #43cea2 0%, #185a9d 100%);
