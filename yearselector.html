@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>Gincana | Escolha de ano</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#43cea2">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.slim.js" integrity="sha256-5i/mQ300M779N2OVDrl16lbohwXNUdzL/R2aVUXyXWA=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/yeti/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="selector_style.css">
+</head>
+<body>
+    <center><h1>Escolha um ano para ver</h1></center>
+    <div class="wrapper">
+        <div class="col-md-4">
+            <div class="card" data-href="index.html?y=2016">
+                <center>
+                    <h2><strong>2016</strong></h2>
+                    <h4>Equipe Thunder, Equipe Hare e Equipe Safa</h4>
+                </center>
+            </div>
+
+            <div class="card" data-href="index.html?y=2015">
+                <center>
+                    <h2><strong>2015</strong></h2>
+                    <h4>Equipe Joker, Equipe Tag e Equipe Monstro</h4>
+                </center>
+            </div>
+
+            <div class="card" data-href="index.html?y=2014">
+                <center>
+                    <h2><strong>2014</strong></h2>
+                    <h4>Equipe Flappy, Equipe Nacho e Equipe Afro</h4>
+                </center>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    jQuery(document).ready(function($) {
+        $(".card").click(function() {
+            window.document.location = $(this).data("href");
+        });
+    });
+    </script>
+</body>
+</html>

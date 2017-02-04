@@ -238,3 +238,7 @@ function checkYoutubeArray() {
         }
     }
 }
+
+function changeYear() {
+    window.location = "yearselector.html";
+}
