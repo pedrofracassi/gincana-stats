@@ -98,34 +98,35 @@ var lastphotos = new Array();
 
 function fetchEverything() {
     for (i = 0; i < Object.keys(equipes.years[year]).length; i++) {
-    var e = equipes.years[year][i];
+        var e = equipes.years[year][i];
 
-    getYoutubeSubscriberCount(e, function(data, equipe) {
-        var trow = {
-            equipe: equipe,
-            count: data
-        };
-        youtube_array.push(trow);
-        checkYoutubeArray();
-    });
-    getInstagramFollowerCount(e, function(data, equipe) {
-        var trow = {
-            equipe: equipe,
-            count: data.user.followed_by.count
-        };
+        getYoutubeSubscriberCount(e, function(data, equipe) {
+            var trow = {
+                equipe: equipe,
+                count: data
+            };
+            youtube_array.push(trow);
+            checkYoutubeArray();
+        });
+        getInstagramFollowerCount(e, function(data, equipe) {
+            var trow = {
+                equipe: equipe,
+                count: data.user.followed_by.count
+            };
 
-        lastphotos = lastphotos.concat(data.user.media.nodes);
-        instagram_array.push(trow);
-        checkInstagramArray();
-    });
-    getFacebookFanCount(e, function(data, equipe) {
-        var trow = {
-            equipe: equipe,
-            count: data
-        };
-        facebook_array.push(trow);
-        checkFacebookArray();
-    });
+            lastphotos = lastphotos.concat(data.user.media.nodes);
+            instagram_array.push(trow);
+            checkInstagramArray();
+        });
+        getFacebookFanCount(e, function(data, equipe) {
+            var trow = {
+                equipe: equipe,
+                count: data
+            };
+            facebook_array.push(trow);
+            checkFacebookArray();
+        });
+    }
 }
 
 function refreshAll() {
