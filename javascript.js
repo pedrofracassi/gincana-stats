@@ -130,8 +130,8 @@ function fetchEverything() {
 }
 
 function refreshAll() {
-    document.getElementsByClassName('refresh-button')[0].setAttribute('disabled', 'yay');
-    document.getElementsByClassName('refresh-button')[0].innerHTML = '<i id="reloadSpinner" class="fa fa-refresh fa-spin"></i> Recarregando';
+    document.getElementById('refresh-button').setAttribute('disabled', 'yay');
+    document.getElementById('refresh-button').innerHTML = '<i id="reloadSpinner" class="fa fa-refresh fa-spin"></i> Recarregando';
     while(instagram_array.length) instagram_array.pop();
     while(facebook_array.length) facebook_array.pop();
     while(youtube_array.length) youtube_array.pop();
@@ -168,8 +168,8 @@ function sortByKey(array, key) {
 function checkIfStuffIsReady() {
     console.log(readystuff);
     if (readystuff == 3) {
-        document.getElementsByClassName('refresh-button')[0].removeAttribute('disabled');
-        document.getElementsByClassName('refresh-button')[0].innerHTML = '<i id="reloadSpinner" class="fa fa-refresh"></i> Recarregar';
+        document.getElementById('refresh-button').removeAttribute('disabled');
+        document.getElementById('refresh-button').innerHTML = '<i id="reloadSpinner" class="fa fa-refresh"></i> Recarregar';
     }
 }
 
