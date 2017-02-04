@@ -3,7 +3,7 @@ card = '<div class="card" data-href="index.html?y=2016"><center><h2><strong clas
 $.each(equipes.years, function(index, value) {
     var div = document.createElement('div');
     div.innerHTML = card;
-    div.getElementsByClassName('card')[0].setAttribute('data-href', 'index.html?y=' + index);
+    div.getElementsByClassName('card')[0].setAttribute('data-href', './?y=' + index);
     div.getElementsByClassName('anoCard')[0].innerHTML = index;
     var str = "";
     for (i = 0; i < value.length; i++) {
