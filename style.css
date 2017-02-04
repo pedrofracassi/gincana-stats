@@ -43,7 +43,6 @@ td {
   border-radius: 5px;
   transition: all 0.5s ease;
 }
-
 .panel:hover {
   -webkit-box-shadow: 0px 19px 22px -4px rgba(0,0,0,0.10);
   -moz-box-shadow: 0px 19px 22px -4px rgba(0,0,0,0.10);
@@ -103,7 +102,7 @@ td {
 }
 /* FIM CARDS REDES SOCIAIS */
 /* 0.2 HEADER */
-.refresh-button {
+.header-button {
     border-radius: 5px !important;
     margin-top: 10px;
     background-color: transparent;
@@ -111,12 +110,12 @@ td {
     color: white;
     border-width: 2px;
 }
-.refresh-button:hover {
+.header-button:hover {
     background-color: white;
     color: black;
     border-color: white;
 }
-.refresh-button:disabled,.refresh-button:disabled:hover {
+.header-button:disabled,.header-button:disabled:hover {
     background-color: #f3f3f3;
     border-color: #f3f3f3;
     color: #aaaaaa;
