@@ -160,7 +160,6 @@ function sortByKey(array, key) {
         if (typeof y == "string") {
             y = y.toLowerCase();
         }
-
         return ((x < y) ? -1 : ((x > y) ? 1 : 0));
     });
 }
@@ -270,5 +269,6 @@ function checkYoutubeArray() {
 function changeYear() {
     window.location = "yearselector.html";
 }
+
 
 fetchEverything();
