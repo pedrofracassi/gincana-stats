@@ -244,8 +244,6 @@ function checkInstagramArray() {
         checkIfStuffIsReady();
         delete newarray;
     }
-
-
 }
 
 function checkYoutubeArray() {
