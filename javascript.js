@@ -187,7 +187,7 @@ function checkFacebookArray() {
         for (i = 0; i < newarray.length; i++) {
             var place = equipes.years[year].length - i;
             var tr = document.createElement('tr');
-            tr.innerHTML = '<td><strong>#' + place + '</strong> ' + newarray[i].equipe.nome + ' (/' + newarray[i].equipe.facebook + ') - <small>' + numberWithCommas(newarray[i].count) + ' curtidas</small></td>';
+            tr.innerHTML = '<td><strong>#' + place + '</strong> <i class="fa fa-caret-right" style="color: #' + newarray[i].equipe.cor + '"></i> ' + newarray[i].equipe.nome + ' (/' + newarray[i].equipe.facebook + ') - <small>' + numberWithCommas(newarray[i].count) + ' curtidas</small></td>';
             $('#facebook-tbody').prepend(tr);
         }
 
@@ -212,7 +212,7 @@ function checkInstagramArray() {
         for (index = 0; index < lenght; index++) {
             var place = equipes.years[year].length - index;
             var tr = document.createElement('tr');
-            tr.innerHTML = '<td><strong>#' + place + '</strong> ' + newarray[index].equipe.nome + ' (@' + newarray[index].equipe.instagram + ') - <small>' + numberWithCommas(newarray[index].count) + ' seguidores</small></td>';
+            tr.innerHTML = '<td><strong>#' + place + '</strong> <i class="fa fa-caret-right" style="color: #' + newarray[index].equipe.cor + '"></i> ' + newarray[index].equipe.nome + ' (@' + newarray[index].equipe.instagram + ') - <small>' + numberWithCommas(newarray[index].count) + ' seguidores</small></td>';
             $('#instagram-tbody').prepend(tr);
         }
 
@@ -260,7 +260,7 @@ function checkYoutubeArray() {
         for (i = 0; i < newarray.length; i++) {
             var place = equipes.years[year].length - i;
             var tr = document.createElement('tr');
-            tr.innerHTML = '<td><strong>#' + place + '</strong> ' + newarray[i].equipe.nome + ' (/' + newarray[i].equipe.youtube + ') - <small>' + numberWithCommas(newarray[i].count) + ' inscritos</small></td>';
+            tr.innerHTML = '<td><strong>#' + place + '</strong> <i class="fa fa-caret-right" style="color: #' + newarray[i].equipe.cor + '"></i> ' + newarray[i].equipe.nome + ' (/' + newarray[i].equipe.youtube + ') - <small>' + numberWithCommas(newarray[i].count) + ' inscritos</small></td>';
             $('#youtube-tbody').prepend(tr);
         }
 
