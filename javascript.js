@@ -237,7 +237,7 @@ function checkInstagramArray() {
             div.getElementsByClassName('postImage')[0].setAttribute('src', orderedphotos[i].thumbnail_src);
             div.getElementsByClassName('postLink')[0].setAttribute('href', 'http://instagram.com/p/' + orderedphotos[i].code);
             if (orderedphotos[i].caption) {
-                div.getElementsByClassName('postDescription')[0].innerHTML = orderedphotos[i].equipe.nome;
+                div.getElementsByClassName('postDescription')[0].innerHTML = '<i class="fa fa-caret-right" style="color: #' + orderedphotos[i].equipe.cor + '"></i> ' + orderedphotos[i].equipe.nome;
             } else {
                 div.getElementsByClassName('postDescription')[0].remove();
             }
