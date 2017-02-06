@@ -4,21 +4,21 @@ equipes = {
         "2016": [
             {
                 "nome": "Equipe Thunder",
-                "cor": "Amarela",
+                "cor": "F2ED5B",
                 "instagram": "equipethunder2016",
                 "facebook": "equipethunder2016",
                 "youtube": "UCgi1UX0_RTYh4Rl67oSlybA"
             },
             {
                 "nome": "Equipe Hare",
-                "cor": "Vermelho",
+                "cor": "FB0200",
                 "instagram": "equipehare",
                 "facebook": "476825302524129",
                 "youtube": "UCov_WWXgy-QbEO1fSWMFliA"
             },
             {
                 "nome": "Equipe Safa",
-                "cor": "Verde",
+                "cor": "45B03E",
                 "instagram": "equipe.safa",
                 "facebook": "equipesafa",
                 "youtube": "UC6attZ_wy7i9fTEXHkdUJcw"
