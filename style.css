@@ -202,8 +202,6 @@ h1 span {
    overflow: hidden;
    text-overflow: ellipsis;
    display: -webkit-box;
-   line-height: 16px;     /* fallback */
-   max-height: 32px;      /* fallback */
    -webkit-line-clamp: 2; /* number of lines to show */
    -webkit-box-orient: vertical;
 }
@@ -239,12 +237,11 @@ h1 span {
   background-color: rgba(0,0,0,0.8);
   z-index:100;
   color: #fff;
-  width: 100%;
   padding: 10px 15px;
   bottom: 0;
   left: 0;
   border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
 }
 /* FIM FEED INSTAGRAM */
 /* 0.4 FOOTER */
