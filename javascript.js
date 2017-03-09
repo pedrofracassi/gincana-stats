@@ -56,9 +56,23 @@ if(qd.y != undefined) {
 
 var website_count = 0;
 
-if (equipes.schools[school].years[year].config.instagram_enabled) website_count++;
-if (equipes.schools[school].years[year].config.facebook_enabled) website_count++;
-if (equipes.schools[school].years[year].config.youtube_enabled) website_count++;
+if (equipes.schools[school].years[year].config.instagram_enabled) {
+    website_count++;
+} else {
+    $('#instagram-column').remove();
+}
+
+if (equipes.schools[school].years[year].config.facebook_enabled) {
+    website_count++;
+} else {
+    $('#facebook-column').remove();
+}
+
+if (equipes.schools[school].years[year].config.youtube_enabled) {
+    website_count++;
+} else {
+    $('#youtube-column').remove();
+}
 
 document.getElementById('title').innerHTML = "Gincana " + equipes.schools[school].name + " " + year;
 
@@ -297,7 +311,7 @@ function checkYoutubeArray() {
 }
 
 function changeYear() {
-    window.location = "yearselector.html";
+    window.location = "selector.html";
 }
 
 
