@@ -1,15 +1,14 @@
 equipes = {
     "default_year": "2016",
-    "schools": [
-        {
-            "link": "oficina",
+    "schools": {
+        "oficina": {
             "name": "Colégio Oficina",
             "years": {
                 "2016": {
                     "config": {
-                        "enable_instagram": true,
-                        "enable_facebook": true,
-                        "enable_youtube": true,
+                        "instagram_enabled": true,
+                        "facebook_enabled": true,
+                        "youtube_enabled": true,
                     },
                     "teams": [
                         {
@@ -37,15 +36,14 @@ equipes = {
                 }
             }
         },
-        {
-            "link": "anchieta",
+        "anchieta": {
             "name": "Colégio Anchieta",
             "years": {
                 "2017": {
                     "config": {
-                        "enable_instagram": true,
-                        "enable_facebook": false,
-                        "enable_youtube": false,
+                        "instagram_enabled": true,
+                        "facebook_enabled": false,
+                        "youtube_enabled": false,
                     },
                     "teams": [
                         {
@@ -65,7 +63,7 @@ equipes = {
                         {
                             "nome": "Equipe Oxe",
                             "cor": "7EF757",
-                            "instagram": "equipe.safa",
+                            "instagram": "equipeoxe2017",
                             "facebook": "",
                             "youtube": ""
                         },
@@ -79,7 +77,7 @@ equipes = {
                         {
                             "nome": "Equipe Raça",
                             "cor": "EE3226",
-                            "instagram": "equiperaca",
+                            "instagram": "equipe.raca",
                             "facebook": "",
                             "youtube": ""
                         }
@@ -87,5 +85,5 @@ equipes = {
                 }
             }
         }
-    ]
+    }
 }

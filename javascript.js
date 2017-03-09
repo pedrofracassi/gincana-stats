@@ -26,12 +26,26 @@ location.search.substr(1).split("&").forEach(function(item) {
 
 var year = 0;
 
+if(qd.s != undefined) {
+    if (qd.s['0'] != undefined) {
+        if (qd.s['0'] in equipes.schools) {
+            school = qd.s['0'];
+        } else {
+            window.location = 'yearselector.html';
+        }
+    } else {
+        window.location = 'yearselector.html';
+    }
+} else {
+    window.location = 'yearselector.html';
+}
+
 if(qd.y != undefined) {
     if (qd.y['0'] != undefined) {
-        if (qd.y['0'] in equipes.years) {
+        if (qd.y['0'] in equipes.schools[school].years) {
             year = qd.y['0'];
         } else {
-            window.location = '?y=' + equipes.default_year;
+            window.location = 'yearselector.html';
         }
     } else {
         year = equipes.default_year;
@@ -40,10 +54,13 @@ if(qd.y != undefined) {
     year = equipes.default_year;
 }
 
-console.log(year);
-console.log(equipes.years[year]);
+var website_count = 0;
 
-document.getElementById('title_year').innerHTML = year;
+if (equipes.schools[school].years[year].config.instagram_enabled) website_count++;
+if (equipes.schools[school].years[year].config.facebook_enabled) website_count++;
+if (equipes.schools[school].years[year].config.youtube_enabled) website_count++;
+
+document.getElementById('title').innerHTML = "Gincana " + equipes.schools[school].name + " " + year;
 
 function getText(url, callback) {
     var request = new XMLHttpRequest();
@@ -97,39 +114,49 @@ var youtube_array = new Array();
 var lastphotos = new Array();
 
 function fetchEverything() {
-    for (i = 0; i < Object.keys(equipes.years[year]).length; i++) {
-        var e = equipes.years[year][i];
+    for (i = 0; i < Object.keys(equipes.schools[school].years[year].teams).length; i++) {
+        var e = equipes.schools[school].years[year].teams[i];
+        console.log(i);
+        console.log(equipes.schools[school].years[year].teams[i]);
 
-        getYoutubeSubscriberCount(e, function(data, equipe) {
-            var trow = {
-                equipe: equipe,
-                count: data
-            };
-            youtube_array.push(trow);
-            checkYoutubeArray();
-        });
-        getInstagramFollowerCount(e, function(data, equipe) {
-            var trow = {
-                equipe: equipe,
-                count: data.user.followed_by.count
-            };
+        if (equipes.schools[school].years[year].config.youtube_enabled) {
+            getYoutubeSubscriberCount(e, function(data, equipe) {
+                var trow = {
+                    equipe: equipe,
+                    count: data
+                };
+                youtube_array.push(trow);
+                checkYoutubeArray();
+            });
+        }
 
-            for (i = 0; i < data.user.media.nodes.length; i++) {
-                data.user.media.nodes[i].equipe = equipe;
-            }
+        if (equipes.schools[school].years[year].config.instagram_enabled) {
+            getInstagramFollowerCount(e, function(data, equipe) {
+                var trow = {
+                    equipe: equipe,
+                    count: data.user.followed_by.count
+                };
 
-            lastphotos = lastphotos.concat(data.user.media.nodes);
-            instagram_array.push(trow);
-            checkInstagramArray();
-        });
-        getFacebookFanCount(e, function(data, equipe) {
-            var trow = {
-                equipe: equipe,
-                count: data
-            };
-            facebook_array.push(trow);
-            checkFacebookArray();
-        });
+                for (i = 0; i < data.user.media.nodes.length; i++) {
+                    data.user.media.nodes[i].equipe = equipe;
+                }
+
+                lastphotos = lastphotos.concat(data.user.media.nodes);
+                instagram_array.push(trow);
+                checkInstagramArray();
+            });
+        }
+
+        if (equipes.schools[school].years[year].config.facebook_enabled) {
+            getFacebookFanCount(e, function(data, equipe) {
+                var trow = {
+                    equipe: equipe,
+                    count: data
+                };
+                facebook_array.push(trow);
+                checkFacebookArray();
+            });
+        }
     }
 }
 
@@ -170,14 +197,14 @@ function sortByKey(array, key) {
 
 function checkIfStuffIsReady() {
     console.log(readystuff);
-    if (readystuff == 3) {
+    if (readystuff == website_count) {
         document.getElementById('refresh-button').removeAttribute('disabled');
         document.getElementById('refresh-button').innerHTML = '<i id="reloadSpinner" class="fa fa-refresh"></i> Recarregar';
     }
 }
 
 function checkFacebookArray() {
-    if (facebook_array.length == equipes.years[year].length) {
+    if (facebook_array.length == Object.keys(equipes.schools[school].years[year].teams).length) {
         var newarray = facebook_array.sort(function(a, b) {
             return a.count - b.count;
         });
@@ -185,7 +212,7 @@ function checkFacebookArray() {
         document.getElementById("facebook-loading").setAttribute('style', 'display:none;');
 
         for (i = 0; i < newarray.length; i++) {
-            var place = equipes.years[year].length - i;
+            var place = equipes.schools[school].years[year].length - i;
             var tr = document.createElement('tr');
             tr.innerHTML = '<td><strong>#' + place + '</strong> <i class="fa fa-caret-right" style="color: #' + newarray[i].equipe.cor + '"></i> ' + newarray[i].equipe.nome + ' (/' + newarray[i].equipe.facebook + ') - <small>' + numberWithCommas(newarray[i].count) + ' curtidas</small></td>';
             $('#facebook-tbody').prepend(tr);
@@ -197,8 +224,7 @@ function checkFacebookArray() {
 }
 
 function checkInstagramArray() {
-    console.log("yay");
-    if (instagram_array.length == equipes.years[year].length) {
+    if (instagram_array.length == Object.keys(equipes.schools[school].years[year].teams).length) {
 
         // RANKING DAS EQUIPES //
         var newarray = instagram_array.sort(function(a, b) {
@@ -210,7 +236,7 @@ function checkInstagramArray() {
         var lenght = newarray.length;
 
         for (index = 0; index < lenght; index++) {
-            var place = equipes.years[year].length - index;
+            var place = Object.keys(equipes.schools[school].years[year].teams).length - index;
             var tr = document.createElement('tr');
             tr.innerHTML = '<td><strong>#' + place + '</strong> <i class="fa fa-caret-right" style="color: #' + newarray[index].equipe.cor + '"></i> ' + newarray[index].equipe.nome + ' (@' + newarray[index].equipe.instagram + ') - <small>' + numberWithCommas(newarray[index].count) + ' seguidores</small></td>';
             $('#instagram-tbody').prepend(tr);
@@ -223,8 +249,8 @@ function checkInstagramArray() {
             return b.date - a.date;
         });
 
-        var maxphotos = 6;
-        if (orderedphotos.length < 6) {
+        var maxphotos = 9;
+        if (orderedphotos.length < maxphotos) {
             maxphotos = orderedphotos.length;
         }
 
@@ -250,7 +276,7 @@ function checkInstagramArray() {
 }
 
 function checkYoutubeArray() {
-    if (youtube_array.length == equipes.years[year].length) {
+    if (youtube_array.length == Object.keys(equipes.schools[school].years[year].teams).length) {
         var newarray = youtube_array.sort(function(a, b) {
             return a.count - b.count;
         });
@@ -258,7 +284,7 @@ function checkYoutubeArray() {
         document.getElementById("youtube-loading").setAttribute('style', 'display:none;');
 
         for (i = 0; i < newarray.length; i++) {
-            var place = equipes.years[year].length - i;
+            var place = equipes.schools[school].years[year].length - i;
             var tr = document.createElement('tr');
             tr.innerHTML = '<td><strong>#' + place + '</strong> <i class="fa fa-caret-right" style="color: #' + newarray[i].equipe.cor + '"></i> ' + newarray[i].equipe.nome + ' (/' + newarray[i].equipe.youtube + ') - <small>' + numberWithCommas(newarray[i].count) + ' inscritos</small></td>';
             $('#youtube-tbody').prepend(tr);
