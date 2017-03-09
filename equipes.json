@@ -1,28 +1,89 @@
 equipes = {
     "default_year": "2016",
-    "years": {
-        "2016": [
-            {
-                "nome": "Equipe Thunder",
-                "cor": "F4BF3B",
-                "instagram": "equipethunder2016",
-                "facebook": "equipethunder2016",
-                "youtube": "UCgi1UX0_RTYh4Rl67oSlybA"
-            },
-            {
-                "nome": "Equipe Hare",
-                "cor": "FB0200",
-                "instagram": "equipehare",
-                "facebook": "476825302524129",
-                "youtube": "UCov_WWXgy-QbEO1fSWMFliA"
-            },
-            {
-                "nome": "Equipe Safa",
-                "cor": "45B03E",
-                "instagram": "equipe.safa",
-                "facebook": "equipesafa",
-                "youtube": "UC6attZ_wy7i9fTEXHkdUJcw"
+    "schools": {
+        "oficina": {
+            "name": "Colégio Oficina",
+            "years": {
+                "2016": {
+                    "config": {
+                        "instagram_enabled": true,
+                        "facebook_enabled": true,
+                        "youtube_enabled": true,
+                    },
+                    "teams": [
+                        {
+                            "nome": "Equipe Thunder",
+                            "cor": "F4BF3B",
+                            "instagram": "equipethunder2016",
+                            "facebook": "equipethunder2016",
+                            "youtube": "UCgi1UX0_RTYh4Rl67oSlybA"
+                        },
+                        {
+                            "nome": "Equipe Hare",
+                            "cor": "FB0200",
+                            "instagram": "equipehare",
+                            "facebook": "476825302524129",
+                            "youtube": "UCov_WWXgy-QbEO1fSWMFliA"
+                        },
+                        {
+                            "nome": "Equipe Safa",
+                            "cor": "45B03E",
+                            "instagram": "equipe.safa",
+                            "facebook": "equipesafa",
+                            "youtube": "UC6attZ_wy7i9fTEXHkdUJcw"
+                        }
+                    ]
+                }
             }
-        ]
+        },
+        "anchieta": {
+            "name": "Colégio Anchieta",
+            "years": {
+                "2017": {
+                    "config": {
+                        "instagram_enabled": true,
+                        "facebook_enabled": false,
+                        "youtube_enabled": false,
+                    },
+                    "teams": [
+                        {
+                            "nome": "Equipe DAB",
+                            "cor": "FBDA00",
+                            "instagram": "equipedab_",
+                            "facebook": "",
+                            "youtube": ""
+                        },
+                        {
+                            "nome": "Equipe Sensa",
+                            "cor": "ED5D00",
+                            "instagram": "equipesensa",
+                            "facebook": "",
+                            "youtube": ""
+                        },
+                        {
+                            "nome": "Equipe Oxe",
+                            "cor": "7EF757",
+                            "instagram": "equipeoxe2017",
+                            "facebook": "",
+                            "youtube": ""
+                        },
+                        {
+                            "nome": "Equipe Shori",
+                            "cor": "1F61F8",
+                            "instagram": "equipeshori",
+                            "facebook": "",
+                            "youtube": ""
+                        },
+                        {
+                            "nome": "Equipe Raça",
+                            "cor": "EE3226",
+                            "instagram": "equipe.raca",
+                            "facebook": "",
+                            "youtube": ""
+                        }
+                    ]
+                }
+            }
+        }
     }
 }
