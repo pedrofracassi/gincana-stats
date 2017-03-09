@@ -11,9 +11,9 @@ $.each(equipes.schools, function(school, school_value) {
         var str = "";
         for (i = 0; i < year_value.teams.length; i++) {
             console.log(year_value.teams[i]);
-            if (i == (year_value.length - 1)) {
+            if (i == (year_value.teams.length - 1)) {
                 str = str + year_value.teams[i].nome;
-            } else if (i == (year_value.length - 2)) {
+            } else if (i == (year_value.teams.length - 2)) {
                 str = str + year_value.teams[i].nome + " e ";
             } else {
                 str = str + year_value.teams[i].nome + ", ";

@@ -297,7 +297,7 @@ function checkYoutubeArray() {
 }
 
 function changeYear() {
-    window.location = "selector.html";
+    window.location = "yearselector.html";
 }
 
 
