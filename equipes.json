@@ -84,6 +84,34 @@ equipes = {
                     ]
                 }
             }
+        },
+        "modulo": {
+            "name": "Colégio Módulo",
+            "years": {
+                "2017": {
+                    "config": {
+                        "instagram_enabled": true,
+                        "facebook_enabled": false,
+                        "youtube_enabled": false,
+                    },
+                    "teams": [
+                        {
+                            "nome": "Equipe Kung",
+                            "cor": "FFE12C",
+                            "instagram": "equipekung",
+                            "facebook": "",
+                            "youtube": ""
+                        },
+                        {
+                            "nome": "Equipe ET",
+                            "cor": "A7E76C",
+                            "instagram": "etequipe",
+                            "facebook": "",
+                            "youtube": ""
+                        }
+                    ]
+                }
+            }
         }
     }
 }
