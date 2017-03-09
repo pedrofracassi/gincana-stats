@@ -31,13 +31,13 @@ if(qd.s != undefined) {
         if (qd.s['0'] in equipes.schools) {
             school = qd.s['0'];
         } else {
-            window.location = 'yearselector.html';
+            window.location = 'selector.html';
         }
     } else {
-        window.location = 'yearselector.html';
+        window.location = 'selector.html';
     }
 } else {
-    window.location = 'yearselector.html';
+    window.location = 'selector.html';
 }
 
 if(qd.y != undefined) {
@@ -45,13 +45,13 @@ if(qd.y != undefined) {
         if (qd.y['0'] in equipes.schools[school].years) {
             year = qd.y['0'];
         } else {
-            window.location = 'yearselector.html';
+            window.location = 'selector.html';
         }
     } else {
-        year = equipes.default_year;
+        window.location = 'selector.html';
     }
 } else {
-    year = equipes.default_year;
+    window.location = 'selector.html';
 }
 
 var website_count = 0;
