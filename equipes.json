@@ -2,7 +2,7 @@ equipes = {
     "default_year": "2016",
     "schools": {
         "oficina": {
-            "name": "Colégio Oficina",
+            "name": "Oficina",
             "years": {
                 "2016": {
                     "config": {
@@ -37,7 +37,7 @@ equipes = {
             }
         },
         "anchieta": {
-            "name": "Colégio Anchieta",
+            "name": "Anchieta",
             "years": {
                 "2017": {
                     "config": {
@@ -86,7 +86,7 @@ equipes = {
             }
         },
         "modulo": {
-            "name": "Colégio Módulo",
+            "name": "Módulo",
             "years": {
                 "2017": {
                     "config": {
@@ -98,21 +98,46 @@ equipes = {
                         {
                             "nome": "Equipe Kung",
                             "cor": "FFE12C",
-                            "instagram": "equipekung",
-                            "facebook": "",
-                            "youtube": ""
+                            "instagram": "equipekung"
                         },
                         {
                             "nome": "Equipe ET",
                             "cor": "A7E76C",
-                            "instagram": "etequipe",
-                            "facebook": "",
-                            "youtube": ""
+                            "instagram": "etequipe"
                         },
                         {
                             "nome": "Equipe Dom",
-                            "cor": "FFFFFF",
+                            "cor": "00BCF2",
                             "instagram": "domequipe_"
+                        }
+                    ]
+                }
+            }
+        },
+        "portinari": {
+            "name": "Portinari",
+            "years": {
+                "2017": {
+                    "config": {
+                        "instagram_enabled": true,
+                        "facebook_enabled": false,
+                        "youtube_enabled": false,
+                    },
+                    "teams": [
+                        {
+                            "nome": "Equipe Sarra",
+                            "cor": "4B94DF",
+                            "instagram": "equipesarra"
+                        },
+                        {
+                            "nome": "Equipe Mano",
+                            "cor": "FAD71C",
+                            "instagram": "equipemano"
+                        },
+                        {
+                            "nome": "Equipe Oê",
+                            "cor": "D73D33",
+                            "instagram": "equipe.oe"
                         }
                     ]
                 }
