@@ -25,6 +25,8 @@ h4 {
 }
 
 .card {
+    padding-left: 10px;
+    padding-right: 10px;
     background-color: white;
     border-radius: 10px;
     cursor: pointer;
