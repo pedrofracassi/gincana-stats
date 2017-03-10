@@ -177,18 +177,28 @@ function fetchEverything() {
 function refreshAll() {
     document.getElementById('refresh-button').setAttribute('disabled', 'yay');
     document.getElementById('refresh-button').innerHTML = '<i id="reloadSpinner" class="fa fa-refresh fa-spin"></i> Recarregando';
-    while(instagram_array.length) instagram_array.pop();
-    while(facebook_array.length) facebook_array.pop();
-    while(youtube_array.length) youtube_array.pop();
-    while(lastphotos.length) lastphotos.pop();
-    document.getElementById("facebook-loading").removeAttribute('style');
-    document.getElementById("instagram-loading").removeAttribute('style');
-    document.getElementById("youtube-loading").removeAttribute('style');
-    document.getElementById("instagram-photos-loading").removeAttribute('style');
-    document.getElementById("youtube-tbody").innerHTML = "";
-    document.getElementById("instagram-tbody").innerHTML = "";
-    document.getElementById("facebook-tbody").innerHTML = "";
-    document.getElementById("photosContainer").innerHTML = "";
+
+    if (equipes.schools[school].years[year].config.facebook_enabled) {
+        while(facebook_array.length) facebook_array.pop();
+        document.getElementById("facebook-loading").removeAttribute('style');
+        document.getElementById("facebook-tbody").innerHTML = "";
+    }
+
+    if (equipes.schools[school].years[year].config.instagram_enabled) {
+        while(lastphotos.length) lastphotos.pop();
+        while(instagram_array.length) instagram_array.pop();
+        document.getElementById("instagram-loading").removeAttribute('style');
+        document.getElementById("instagram-tbody").innerHTML = "";
+        document.getElementById("instagram-photos-loading").removeAttribute('style');
+        document.getElementById("photosContainer").innerHTML = "";
+    }
+
+    if (equipes.schools[school].years[year].config.youtube_enabled) {
+        while(youtube_array.length) youtube_array.pop();
+        document.getElementById("youtube-loading").removeAttribute('style');
+        document.getElementById("youtube-tbody").innerHTML = "";
+    }
+    
     console.log('Refreshing...');
     readystuff = 0;
     fetchEverything();
