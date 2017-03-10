@@ -108,6 +108,11 @@ equipes = {
                             "instagram": "etequipe",
                             "facebook": "",
                             "youtube": ""
+                        },
+                        {
+                            "nome": "Equipe Dom",
+                            "cor": "FFFFFF",
+                            "instagram": "domequipe_"
                         }
                     ]
                 }
