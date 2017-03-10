@@ -226,7 +226,7 @@ function checkFacebookArray() {
         document.getElementById("facebook-loading").setAttribute('style', 'display:none;');
 
         for (i = 0; i < newarray.length; i++) {
-            var place = Object.keys(equipes.schools[school].years[year]).length - i;
+            var place = Object.keys(equipes.schools[school].years[year].teams).length - i;
             var tr = document.createElement('tr');
             tr.innerHTML = '<td><strong>#' + place + '</strong> <i class="fa fa-caret-right" style="color: #' + newarray[i].equipe.cor + '"></i> ' + newarray[i].equipe.nome + ' (/' + newarray[i].equipe.facebook + ') - <small>' + numberWithCommas(newarray[i].count) + ' curtidas</small></td>';
             $('#facebook-tbody').prepend(tr);
@@ -298,7 +298,7 @@ function checkYoutubeArray() {
         document.getElementById("youtube-loading").setAttribute('style', 'display:none;');
 
         for (i = 0; i < newarray.length; i++) {
-            var place = Object.keys(equipes.schools[school].years[year]).length - i;
+            var place = Object.keys(equipes.schools[school].years[year].teams).length - i;
             var tr = document.createElement('tr');
             tr.innerHTML = '<td><strong>#' + place + '</strong> <i class="fa fa-caret-right" style="color: #' + newarray[i].equipe.cor + '"></i> ' + newarray[i].equipe.nome + ' (/' + newarray[i].equipe.youtube + ') - <small>' + numberWithCommas(newarray[i].count) + ' inscritos</small></td>';
             $('#youtube-tbody').prepend(tr);
