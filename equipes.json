@@ -142,6 +142,35 @@ equipes = {
                     ]
                 }
             }
+        },
+        "csp": {
+            "name": "São Paulo",
+            "years": {
+                "2017": {
+                    "config": {
+                        "instagram_enabled": true,
+                        "facebook_enabled": false,
+                        "youtube_enabled": false,
+                    },
+                    "teams": [
+                        {
+                            "nome": "Equipe Arroz",
+                            "cor": "FFD501",
+                            "instagram": "fomedearroz"
+                        },
+                        {
+                            "nome": "Equipe Xeide",
+                            "cor": "2B3081",
+                            "instagram": "xeidegarra"
+                        },
+                        {
+                            "nome": "Equipe Nacho",
+                            "cor": "BA2416",
+                            "instagram": "nachoequipe"
+                        }
+                    ]
+                }
+            }
         }
     }
 }
