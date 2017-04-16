@@ -33,6 +33,30 @@ equipes = {
                             "youtube": "UC6attZ_wy7i9fTEXHkdUJcw"
                         }
                     ]
+                },
+                "2017": {
+                    "config": {
+                        "instagram_enabled": true,
+                        "facebook_enabled": false,
+                        "youtube_enabled": false,
+                    },
+                    "teams": [
+                        {
+                            "nome": "Equipe Zebra",
+                            "cor": "F4BF3B",
+                            "instagram": "equipezebra"
+                        },
+                        {
+                            "nome": "Equipe Raiz",
+                            "cor": "FB0200",
+                            "instagram": "equiperaiz"
+                        },
+                        {
+                            "nome": "Equipe Keda",
+                            "cor": "0331BF",
+                            "instagram": "equipekeda"
+                        }
+                    ]
                 }
             }
         },
